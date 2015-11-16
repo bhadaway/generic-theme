@@ -1,6 +1,7 @@
 - This is a starter theme.
 - Use this tool however you like.
 - Attribution is NOT required.
+- videos.js is based on fitvidsjs.com which is released under the WTFPL license.
 
 Hack this theme up however you like starting with making it your own:
 

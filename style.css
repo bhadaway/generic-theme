@@ -4,7 +4,7 @@ Theme URI: http://generic.tools/theme/
 Author: Bryan Hadaway
 Author URI: http://generic.tools/
 Description: A fully responsive starter theme for designers and developers.
-Version: 0.1
+Version: 0.2
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: black, blue, white, light, one-column, fluid-layout, responsive-layout, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
@@ -19,7 +19,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body{font-family:georgia,serif;font-size:16px;color:#777;line-height:normal;padding:5%;word-wrap:break-word;background:#f6f6f6}
 
 h1, h2, h3, h4, h5, h6{font-family:helvetica,arial,sans-serif;font-weight:bold}
-.entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6, .comment-body h1, .comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6{margin:30px 0 5px}
+.entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6, .comment-body h1, .comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6, #reply-title{margin:30px 0 5px}
 h1{font-size:35px}
 h2{font-size:30px}
 h3{font-size:25px}
@@ -40,7 +40,7 @@ blockquote p:first-of-type{margin-top:0}
 .entry-content ol, .widget-container ol, .comment-body ol{list-style:decimal inside}
 .entry-content ul li:before, .widget-container ul li:before, .comment-body ul li:before{content:"- "}
 .entry-content li, .widget-container li, .comment-body li{margin:5px 0}
-input, textarea{padding:10px;border:0 none;margin-top:10px;background:#f6f6f6}
+input, textarea{padding:10px;border:0 none;outline:0 none;margin-top:10px;background:#f6f6f6}
 input[type="submit"], #menu .toggle:hover{cursor:pointer}
 a img, input[type="image"]{border:0 none}
 img, video, table, select, textarea{max-width:100% !important;height:auto}
@@ -68,16 +68,17 @@ table{width:100%}
 #menu .toggle{display:none;color:#fff;text-align:center;line-height:33px}
 
 #search{float:right}
-#search #s{width:200px;margin-top:0;background-color:#fff}
-.widget-container #s{width:100%}
-.error404 .entry-content #s, .search .entry-content #s{width:200px;margin-top:30px}
-.error404 .entry-content #s, .search .entry-content #s, .widget-container #s{background-color:#f6f6f6}
-#s{background:url(images/find.png) no-repeat 98% center / 24px auto}
+#search .search-field{width:200px;margin-top:0;background-color:#fff}
+.widget-container .search-field{width:100%}
+.error404 .entry-content .search-field, .search .entry-content .search-field{width:200px;margin-top:30px}
+.error404 .entry-content .search-field, .search .entry-content .search-field, .widget-container .search-field{background-color:#f6f6f6}
+.search-field{background:url(images/find.png) no-repeat 98% center / 24px auto}
 
 .button, button, input[type="submit"]{display:inline-block;font-family:georgia,serif;font-size:18px;color:#fff;text-decoration:none;padding:10px;border:0;background:#09f;opacity:0.9}
 .button:hover, button:hover, input[type="submit"]:hover{opacity:1}
 #site-title a{font-family:georgia,serif;font-size:40px;font-weight:normal;color:#777;text-decoration:none;display:inline}
 .single h1.entry-title a{color:#777;text-decoration:none}
+.archive h1.entry-title, .search h1.entry-title{margin-bottom:30px}
 #commentform label{display:block}
 #commentform #comment{width:100%;max-width:400px !important;height:auto}
 #comments .comment{margin:20px 10px}
@@ -103,4 +104,4 @@ table{width:100%}
 @media all and (max-width:480px){.wp-caption, textarea{width:100% !important}}
 
 .screen-reader-text{clip:rect(1px, 1px, 1px, 1px);position:absolute !important}
-.form-allowed-tags, #searchsubmit{display:none}
+.form-allowed-tags, .search-submit{display:none !important}
