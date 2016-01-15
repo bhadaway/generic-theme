@@ -16,6 +16,7 @@ array( 'main-menu' => __( 'Main Menu', 'generic' ) )
 add_action( 'wp_enqueue_scripts', 'generic_load_scripts' );
 function generic_load_scripts()
 {
+wp_enqueue_style( 'generic-style', get_stylesheet_uri() );
 wp_enqueue_script( 'jquery' );
 wp_register_script( 'generic-videos', get_template_directory_uri() . '/js/videos.js' );
 wp_enqueue_script( 'generic-videos' );
@@ -33,10 +34,10 @@ $("#wrapper").vids();
 <?php
 }
 }
-add_action( 'comment_form_before', 'generic_enqueue_comment_reply_script' );
-function generic_enqueue_comment_reply_script()
-{
-if ( get_option( 'thread_comments' ) ) { wp_enqueue_script( 'comment-reply' ); }
+add_filter( 'document_title_separator', 'generic_document_title_separator' );
+function generic_document_title_separator( $sep ) {
+$sep = "|";
+return $sep;
 }
 add_filter( 'the_title', 'generic_title' );
 function generic_title( $title ) {
@@ -57,6 +58,11 @@ register_sidebar( array (
 'before_title' => '<h3 class="widget-title">',
 'after_title' => '</h3>',
 ) );
+}
+add_action( 'comment_form_before', 'generic_enqueue_comment_reply_script' );
+function generic_enqueue_comment_reply_script()
+{
+if ( get_option( 'thread_comments' ) ) { wp_enqueue_script( 'comment-reply' ); }
 }
 function generic_custom_pings( $comment )
 {
