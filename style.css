@@ -4,13 +4,13 @@ Theme URI: http://generic.tools/
 Author: Bryan Hadaway
 Author URI: http://calmestghost.com/
 Description: A fully responsive starter theme for designers and developers.
-Version: 0.3
+Version: 0.4
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
-Tags: black, blue, white, light, one-column, fluid-layout, responsive-layout, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
+Tags: one-column, two-columns, right-sidebar, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
 Text Domain: generic
 
-Generic WordPress Theme © 2015-2016 GenericTools
+Generic WordPress Theme © 2015-2017 GenericTools
 Generic is distributed under the terms of the GNU GPL
 */
 
@@ -43,8 +43,9 @@ blockquote p:first-of-type{margin-top:0}
 .entry-content li, .widget-container li, .comment-body li{margin:10px 0}
 input, textarea{padding:10px;border:0 none;outline:0 none;margin-top:10px;background:#f6f6f6}
 input[type="submit"], #menu .toggle:hover{cursor:pointer}
+input[type="search"]{-webkit-appearance:textfield}
 a img, input[type="image"]{border:0 none}
-img, video, table, select, textarea{max-width:100% !important;height:auto}
+img, video, audio, table, select, textarea{max-width:100% !important;height:auto}
 table{width:100%;margin:30px 0}
 
 #wrapper{max-width:960px;margin:0 auto}
@@ -92,10 +93,10 @@ h2.entry-title, h3.widget-title{margin-top:0}
 .bypostauthor{}
 .wp-caption{width:auto !important}
 .wp-caption.aligncenter, .wp-caption-text, .gallery-caption{text-align:center}
-.alignleft{margin:0 15px 15px 0;float:left}
-.alignright{margin:0 0 15px 15px;float:right}
+.alignleft{margin:0 30px 30px 0;float:left}
+.alignright{margin:0 0 30px 30px;float:right}
 .aligncenter{display:block;margin:30px auto;clear:both}
-.entry-attachment img{margin:30px 0}
+.entry-attachment img{display:block;margin:60px auto 30px}
 #nav-below{margin-top:30px}
 #nav-below a, #nav-above a{text-decoration:none}
 #nav-above a{display:block;font-family:tahoma,sans-serif;font-size:50px;color:#777;line-height:0;margin:30px 0 15px}
@@ -103,7 +104,7 @@ h2.entry-title, h3.widget-title{margin-top:0}
 .nav-next{text-align:right;float:right}
 
 @media all and (max-width:768px){#content, #sidebar{width:100%;padding:5%}#menu label.toggle{display:block}#menu{background:#777}#menu ul{display:none}#menu ul ul{display:none !important}#menu input.toggle:checked + div > ul{display:block}#menu input.toggle:checked + div > ul li a{display:inline-block;width:100%;color:#fff;padding-left:5%}}
-@media all and (max-width:480px){.wp-caption, textarea{width:100% !important}}
+@media all and (max-width:480px){.wp-caption, input, textarea{width:100% !important}}
 
 .screen-reader-text{clip:rect(1px, 1px, 1px, 1px);position:absolute !important}
 .form-allowed-tags, .search-submit{display:none !important}
