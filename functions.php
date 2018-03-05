@@ -8,7 +8,7 @@ add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'html5', array( 'search-form' ) );
 global $content_width;
-if ( ! isset( $content_width ) ) $content_width = 640;
+if ( ! isset( $content_width ) ) $content_width = 1920;
 register_nav_menus(
 array( 'main-menu' => esc_html__( 'Main Menu', 'generic' ) )
 );
@@ -21,6 +21,35 @@ wp_enqueue_script( 'jquery' );
 wp_register_script( 'generic-videos', get_template_directory_uri() . '/js/videos.js' );
 wp_enqueue_script( 'generic-videos' );
 wp_add_inline_script( 'generic-videos', 'jQuery(document).ready(function($){$("#wrapper").vids();});' );
+}
+add_action( 'wp_footer', 'generic_detect_script' );
+function generic_detect_script() {
+?>
+<script>
+jQuery(document).ready(function($){
+var deviceAgent = navigator.userAgent.toLowerCase();
+if (deviceAgent.match(/(iphone|ipod|ipad)/)){
+$('html').addClass('ios');
+$('html').addClass('mobile');
+}
+if (navigator.userAgent.search("MSIE") >= 0) {
+$('html').addClass('ie');
+}
+else if (navigator.userAgent.search("Chrome") >= 0) {
+$('html').addClass('chrome');
+}
+else if (navigator.userAgent.search("Firefox") >= 0) {
+$('html').addClass('firefox');
+}
+else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+$('html').addClass('safari');
+}
+else if (navigator.userAgent.search("Opera") >= 0) {
+$('html').addClass('opera');
+}
+});
+</script>
+<?php
 }
 add_filter( 'document_title_separator', 'generic_document_title_separator' );
 function generic_document_title_separator( $sep ) {
@@ -35,19 +64,24 @@ return '&rarr;';
 return $title;
 }
 }
+add_filter( 'the_content_more_link', 'generic_read_more_link' );
 function generic_read_more_link() {
 if ( ! is_admin() ) {
 return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">...</a>';
 }
 }
-add_filter( 'the_content_more_link', 'generic_read_more_link' );
+add_filter( 'excerpt_more', 'generic_excerpt_read_more_link' );
 function generic_excerpt_read_more_link( $more ) {
 if ( ! is_admin() ) {
 global $post;
 return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">...</a>';
 }
 }
-add_filter( 'excerpt_more', 'generic_excerpt_read_more_link' );
+add_filter( 'intermediate_image_sizes_advanced', 'generic_image_insert_override' );
+function generic_image_insert_override( $sizes ) {
+unset( $sizes[ 'medium_large' ] );
+return $sizes;
+}
 add_action( 'widgets_init', 'generic_widgets_init' );
 function generic_widgets_init()
 {

@@ -16,7 +16,7 @@
 <div id="search">
 <?php get_search_form(); ?>
 </div>
-<label class="toggle" for="toggle">&#9776; Menu</label>
+<label class="toggle" for="toggle">&#9776; <?php esc_html_e( 'Menu', 'generic' ); ?></label>
 <input id="toggle" class="toggle" type="checkbox" />
 <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 </nav>
