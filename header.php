@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>"/>
-<meta name="viewport" content="width=device-width"/>
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta name="viewport" content="width=device-width" />
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -18,7 +18,7 @@
 </div>
 <nav id="menu">
 <div id="search"><?php get_search_form(); ?></div>
-<label class="toggle" for="toggle"><span class="menu-icon">&#9776;</span><span class="menu-title"><?php esc_html_e( 'Menu', 'generic' ); ?></span></label>
+<label class="toggle" for="toggle"><span class="menu-icon">&#9776;</span></label>
 <input id="toggle" class="toggle" type="checkbox" />
 <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 </nav>

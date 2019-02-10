@@ -15,6 +15,10 @@ a {
     text-decoration-skip-ink: auto
 }
 
+button {
+    outline: 0
+}
+
 ol, ul {
     list-style: none
 }
@@ -105,5 +109,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.5s ease
 }

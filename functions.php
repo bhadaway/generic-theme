@@ -84,12 +84,12 @@ return $sizes;
 add_action( 'widgets_init', 'generic_widgets_init' );
 function generic_widgets_init() {
 register_sidebar( array(
-'name'          => esc_html__( 'Sidebar Widget Area', 'generic' ),
-'id'            => 'primary-widget-area',
+'name' => esc_html__( 'Sidebar Widget Area', 'generic' ),
+'id' => 'primary-widget-area',
 'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-'after_widget'  => '</li>',
-'before_title'  => '<h3 class="widget-title">',
-'after_title'   => '</h3>',
+'after_widget' => '</li>',
+'before_title' => '<h3 class="widget-title">',
+'after_title' => '</h3>',
 ) );
 }
 add_action( 'wp_head', 'generic_pingback_header' );
@@ -113,7 +113,7 @@ add_filter( 'get_comments_number', 'generic_comment_count', 0 );
 function generic_comment_count( $count ) {
 if ( ! is_admin() ) {
 global $id;
-$get_comments     = get_comments( 'status=approve&post_id=' . $id );
+$get_comments = get_comments( 'status=approve&post_id=' . $id );
 $comments_by_type = separate_comments( $get_comments );
 return count( $comments_by_type['comment'] );
 } else {
