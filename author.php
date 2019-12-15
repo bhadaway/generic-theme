@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<main id="content">
+<main id="content" role="main">
 <header class="header">
 <?php the_post(); ?>
 <h1 class="entry-title author"><?php the_author_link(); ?></h1>

@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 <?php global $post; ?>
-<main id="content">
+<main id="content" role="main">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <header class="header">
 <h1 class="entry-title"><?php the_title(); ?></h1> <?php edit_post_link(); ?>
 <?php get_template_part( 'entry', 'meta' ); ?>
-<a href="<?php echo esc_url( get_permalink( $post->post_parent ) ); ?>" title="<?php printf( esc_html__( 'Return to %s', 'generic' ), esc_html( get_the_title( $post->post_parent ), 1 ) ); ?>" rev="attachment"><?php printf( esc_html__( '%s Return to ', 'generic' ), '<span class="meta-nav">&larr;</span>' ); ?><?php echo get_the_title( $post->post_parent ); ?></a>
+<a href="<?php echo esc_url( get_permalink( $post->post_parent ) ); ?>" title="<?php printf( esc_html__( 'Return to %s', 'generic' ), esc_html( get_the_title( $post->post_parent ), 1 ) ); ?>" rev="attachment"><?php printf( esc_html__( '%s Return to ', 'generic' ), '<span class="meta-nav">&larr;</span>' ); ?><?php echo wp_kses_post( get_the_title( $post->post_parent ) ); ?></a>
 <nav id="nav-above" class="navigation">
 <div class="nav-previous"><?php previous_image_link( false, '&lsaquo;' ); ?></div>
 <div class="nav-next"><?php next_image_link( false, '&rsaquo;' ); ?></div>
