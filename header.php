@@ -18,9 +18,9 @@
 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
 </div>
 <nav id="menu" role="navigation">
-<div id="search"><?php get_search_form(); ?></div>
 <button type="button" class="menu-toggle"><span class="menu-icon">&#9776;</span><span class="menu-text screen-reader-text"><?php esc_html_e( ' Menu', 'generic' ); ?></span></button>
 <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+<div id="search"><?php get_search_form(); ?></div>
 </nav>
 </header>
 <div id="container">

@@ -26,7 +26,6 @@ jQuery(document).ready(function ($) {
 var deviceAgent = navigator.userAgent.toLowerCase();
 if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
 $("html").addClass("ios");
-$("html").addClass("mobile");
 }
 if (navigator.userAgent.search("MSIE") >= 0) {
 $("html").addClass("ie");
@@ -68,8 +67,8 @@ return '...';
 return $title;
 }
 }
-if ( ! function_exists( 'wp_body_open' ) ) {
-function wp_body_open() {
+if ( ! function_exists( 'generic_wp_body_open' ) ) {
+function generic_wp_body_open() {
 do_action( 'wp_body_open' );
 }
 }
@@ -80,14 +79,14 @@ echo '<a href="#content" class="skip-link screen-reader-text">' . esc_html__( 'S
 add_filter( 'the_content_more_link', 'generic_read_more_link' );
 function generic_read_more_link() {
 if ( ! is_admin() ) {
-return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">...</a>';
+return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">' . sprintf( __( '...%s', 'generic' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
 }
 add_filter( 'excerpt_more', 'generic_excerpt_read_more_link' );
 function generic_excerpt_read_more_link( $more ) {
 if ( ! is_admin() ) {
 global $post;
-return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">...</a>';
+return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">' . sprintf( __( '...%s', 'generic' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
 }
 add_filter( 'big_image_size_threshold', '__return_false' );
