@@ -1,9 +1,9 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/BlogPosting" itemprop="blogPost">
 <header>
 <?php if ( is_singular() ) {
-echo '<h1 class="entry-title">';
+echo '<h1 class="entry-title" itemprop="name">';
 } else {
-echo '<h2 class="entry-title">';
+echo '<h2 class="entry-title" itemprop="name">';
 } ?>
 <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a>
 <?php if ( is_singular() ) {

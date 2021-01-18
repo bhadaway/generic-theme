@@ -67,6 +67,24 @@ return '...';
 return $title;
 }
 }
+function generic_schema_type() {
+$schema = 'https://schema.org/';
+if ( is_single() ) {
+$type = "Article";
+} elseif ( is_author() ) {
+$type = 'ProfilePage';
+} elseif ( is_search() ) {
+$type = 'SearchResultsPage';
+} else {
+$type = 'WebPage';
+}
+echo 'itemscope itemtype="' . $schema . $type . '"';
+}
+add_filter( 'nav_menu_link_attributes', 'generic_schema_url', 10 );
+function generic_schema_url( $atts ) {
+$atts['itemprop'] = 'url';
+return $atts;
+}
 if ( ! function_exists( 'generic_wp_body_open' ) ) {
 function generic_wp_body_open() {
 do_action( 'wp_body_open' );
