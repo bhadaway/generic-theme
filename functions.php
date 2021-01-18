@@ -3,8 +3,9 @@ add_action( 'after_setup_theme', 'generic_setup' );
 function generic_setup() {
 load_theme_textdomain( 'generic', get_template_directory() . '/languages' );
 add_theme_support( 'title-tag' );
-add_theme_support( 'automatic-feed-links' );
+add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'html5', array( 'search-form' ) );
 global $content_width;
 if ( ! isset( $content_width ) ) { $content_width = 1920; }
