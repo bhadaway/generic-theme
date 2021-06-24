@@ -8,22 +8,22 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'html5', array( 'search-form' ) );
 global $content_width;
-if ( ! isset( $content_width ) ) { $content_width = 1920; }
+if ( !isset( $content_width ) ) { $content_width = 1920; }
 register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'generic' ) ) );
 }
-add_action( 'wp_enqueue_scripts', 'generic_load_scripts' );
-function generic_load_scripts() {
+add_action( 'wp_enqueue_scripts', 'generic_enqueue' );
+function generic_enqueue() {
 wp_enqueue_style( 'generic-style', get_stylesheet_uri() );
 wp_enqueue_script( 'jquery' );
 wp_register_script( 'generic-videos', get_template_directory_uri() . '/js/videos.js' );
 wp_enqueue_script( 'generic-videos' );
 wp_add_inline_script( 'generic-videos', 'jQuery(document).ready(function($){$("#wrapper").vids();});' );
 }
-add_action( 'wp_footer', 'generic_footer_scripts' );
-function generic_footer_scripts() {
+add_action( 'wp_footer', 'generic_footer' );
+function generic_footer() {
 ?>
 <script>
-jQuery(document).ready(function ($) {
+jQuery(document).ready(function($) {
 var deviceAgent = navigator.userAgent.toLowerCase();
 if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
 $("html").addClass("ios");
@@ -43,13 +43,22 @@ $("html").addClass("safari");
 else if (navigator.userAgent.search("Opera") >= 0) {
 $("html").addClass("opera");
 }
-$(".menu-icon").on("click", function () {
-$("#menu").toggleClass("toggled");
-});
-$(".menu-toggle").on("keypress", function(e) {
-if(e.which == 13) {
+$(".menu-toggle").on("keypress click", function(e) {
+if (e.which == 13 || e.type === "click") {
+e.preventDefault();
 $("#menu").toggleClass("toggled");
 }
+});
+$(document).keyup(function(e) {
+if (e.keyCode == 27) {
+if ($("#menu").hasClass("toggled")) {
+$("#menu").toggleClass("toggled");
+}
+}
+});
+$("img.no-logo").each(function() {
+var alt = $(this).attr("alt");
+$(this).replaceWith(alt);
 });
 });
 </script>
@@ -86,7 +95,7 @@ function generic_schema_url( $atts ) {
 $atts['itemprop'] = 'url';
 return $atts;
 }
-if ( ! function_exists( 'generic_wp_body_open' ) ) {
+if ( !function_exists( 'generic_wp_body_open' ) ) {
 function generic_wp_body_open() {
 do_action( 'wp_body_open' );
 }
@@ -97,13 +106,13 @@ echo '<a href="#content" class="skip-link screen-reader-text">' . esc_html__( 'S
 }
 add_filter( 'the_content_more_link', 'generic_read_more_link' );
 function generic_read_more_link() {
-if ( ! is_admin() ) {
+if ( !is_admin() ) {
 return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">' . sprintf( __( '...%s', 'generic' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
 }
 add_filter( 'excerpt_more', 'generic_excerpt_read_more_link' );
 function generic_excerpt_read_more_link( $more ) {
-if ( ! is_admin() ) {
+if ( !is_admin() ) {
 global $post;
 return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">' . sprintf( __( '...%s', 'generic' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
@@ -146,7 +155,7 @@ function generic_custom_pings( $comment ) {
 }
 add_filter( 'get_comments_number', 'generic_comment_count', 0 );
 function generic_comment_count( $count ) {
-if ( ! is_admin() ) {
+if ( !is_admin() ) {
 global $id;
 $get_comments = get_comments( 'status=approve&post_id=' . $id );
 $comments_by_type = separate_comments( $get_comments );

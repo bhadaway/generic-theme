@@ -20,7 +20,7 @@
 <a href="<?php echo esc_url( wp_get_attachment_url( $post->ID ) ); ?>" title="<?php echo esc_attr( get_the_title( $post->ID ), 1 ); ?>" rel="attachment"><?php echo esc_url( basename( $post->guid ) ); ?></a>
 <?php endif; ?>
 </div>
-<div class="entry-caption"><?php if ( ! empty( $post->post_excerpt ) ) { the_excerpt(); } ?></div>
+<div class="entry-caption"><?php if ( !empty( $post->post_excerpt ) ) { the_excerpt(); } ?></div>
 <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'full', array( 'itemprop' => 'image' ) ); } ?>
 </div>
 </article>

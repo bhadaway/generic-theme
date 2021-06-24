@@ -3,7 +3,7 @@
 if ( have_comments() ) :
 global $comments_by_type;
 $comments_by_type = separate_comments( $comments );
-if ( ! empty( $comments_by_type['comment'] ) ) :
+if ( !empty( $comments_by_type['comment'] ) ) :
 ?>
 <section id="comments-list" class="comments">
 <h2 class="comments-title"><?php comments_number(); ?></h2>
@@ -23,7 +23,7 @@ if ( ! empty( $comments_by_type['comment'] ) ) :
 </section>
 <?php
 endif;
-if ( ! empty( $comments_by_type['pings'] ) ) :
+if ( !empty( $comments_by_type['pings'] ) ) :
 $ping_count = count( $comments_by_type['pings'] );
 ?>
 <section id="trackbacks-list" class="comments">

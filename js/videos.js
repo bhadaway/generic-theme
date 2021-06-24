@@ -17,6 +17,7 @@ $.extend(settings, options);
 }
 return this.each(function () {
 var selectors = [
+'iframe[src*="anchor.fm"]',
 'iframe[src*="youtube.com"]',
 'iframe[src*="youtube-nocookie.com"]',
 'iframe[src*="tiktok.com"]',
@@ -29,6 +30,7 @@ var selectors = [
 'iframe[src*="blip.tv"]',
 'iframe[src*="spotify.com"]',
 'iframe[src*="soundcloud.com"]',
+'iframe[src*="wordpress.com"]',
 'object',
 'embed'
 ];
