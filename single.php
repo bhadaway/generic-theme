@@ -8,5 +8,4 @@
 <?php get_template_part( 'nav', 'below-single' ); ?>
 </footer>
 </main>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
