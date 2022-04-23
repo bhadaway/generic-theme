@@ -18,6 +18,7 @@ $.extend(settings, options);
 return this.each(function() {
 var selectors = [
 "iframe[src*=\"youtube.com\"]",
+"iframe[src*=\"youtu.be\"]",
 "iframe[src*=\"youtube-nocookie.com\"]",
 "iframe[src*=\"player.vimeo.com\"]",
 "iframe[src*=\"dailymotion.com\"]",

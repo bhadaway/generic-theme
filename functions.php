@@ -7,7 +7,7 @@ add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'responsive-embeds' );
 add_theme_support( 'automatic-feed-links' );
-add_theme_support( 'html5', array( 'search-form' ) );
+add_theme_support( 'html5', array( 'search-form', 'navigation-widgets' ) );
 add_theme_support( 'woocommerce' );
 global $content_width;
 if ( !isset( $content_width ) ) { $content_width = 1920; }
@@ -29,6 +29,11 @@ jQuery(document).ready(function($) {
 var deviceAgent = navigator.userAgent.toLowerCase();
 if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
 $("html").addClass("ios");
+$("html").addClass("mobile");
+}
+if (deviceAgent.match(/(Android)/)) {
+$("html").addClass("android");
+$("html").addClass("mobile");
 }
 if (navigator.userAgent.search("MSIE") >= 0) {
 $("html").addClass("ie");
@@ -45,10 +50,17 @@ $("html").addClass("safari");
 else if (navigator.userAgent.search("Opera") >= 0) {
 $("html").addClass("opera");
 }
+$(".before").on("focus", function() {
+$(".last").focus();
+});
+$(".after").on("focus", function() {
+$(".first").focus();
+});
 $(".menu-toggle").on("keypress click", function(e) {
 if (e.which == 13 || e.type === "click") {
 e.preventDefault();
 $("#menu").toggleClass("toggled");
+$(".looper").toggle();
 }
 });
 $(document).keyup(function(e) {
@@ -68,15 +80,15 @@ $(this).replaceWith(alt);
 }
 add_filter( 'document_title_separator', 'generic_document_title_separator' );
 function generic_document_title_separator( $sep ) {
-$sep = '|';
+$sep = esc_html( '|' );
 return $sep;
 }
 add_filter( 'the_title', 'generic_title' );
 function generic_title( $title ) {
 if ( $title == '' ) {
-return '...';
+return esc_html( '...' );
 } else {
-return $title;
+return esc_attr( $title );
 }
 }
 function generic_schema_type() {
@@ -90,7 +102,7 @@ $type = 'SearchResultsPage';
 } else {
 $type = 'WebPage';
 }
-echo 'itemscope itemtype="' . $schema . $type . '"';
+echo 'itemscope itemtype="' . esc_url( $schema ) . esc_attr( $type ) . '"';
 }
 add_filter( 'nav_menu_link_attributes', 'generic_schema_url', 10 );
 function generic_schema_url( $atts ) {
