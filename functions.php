@@ -16,6 +16,7 @@ register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'generic' ) )
 add_action( 'wp_enqueue_scripts', 'generic_enqueue' );
 function generic_enqueue() {
 wp_enqueue_style( 'generic-style', get_stylesheet_uri() );
+wp_enqueue_style( 'generic-icons', get_template_directory_uri() . '/icons/icons.css' );
 wp_enqueue_script( 'jquery' );
 wp_register_script( 'generic-videos', get_template_directory_uri() . '/js/videos.js' );
 wp_enqueue_script( 'generic-videos' );
@@ -26,30 +27,6 @@ function generic_footer() {
 ?>
 <script>
 jQuery(document).ready(function($) {
-var deviceAgent = navigator.userAgent.toLowerCase();
-if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
-$("html").addClass("ios");
-$("html").addClass("mobile");
-}
-if (deviceAgent.match(/(Android)/)) {
-$("html").addClass("android");
-$("html").addClass("mobile");
-}
-if (navigator.userAgent.search("MSIE") >= 0) {
-$("html").addClass("ie");
-}
-else if (navigator.userAgent.search("Chrome") >= 0) {
-$("html").addClass("chrome");
-}
-else if (navigator.userAgent.search("Firefox") >= 0) {
-$("html").addClass("firefox");
-}
-else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-$("html").addClass("safari");
-}
-else if (navigator.userAgent.search("Opera") >= 0) {
-$("html").addClass("opera");
-}
 $(".before").on("focus", function() {
 $(".last").focus();
 });
@@ -88,7 +65,7 @@ function generic_title( $title ) {
 if ( $title == '' ) {
 return esc_html( '...' );
 } else {
-return esc_attr( $title );
+return wp_kses_post( $title );
 }
 }
 function generic_schema_type() {

@@ -5,7 +5,7 @@ Author: Bryan Hadaway
 Author URI: https://calmestghost.com/
 Description: A fully responsive, SEO-ready, schema-ready, social-media-ready, accessibility-ready, translation-ready, and jQuery-ready starter theme for designers and developers, which comes with its own built-in, lightweight CSS grid (https://generic.tools/grid/). This generic/starter/clean/simple/bare/blank/minimalist/example/cheatsheet/white-label/HTML5/CSS3/base/foundation/framework/skeleton/boilerplate/whatever theme was created specifically as a tool to assist you with building client sites virtually from scratch or building your own themes. It's updated to reflect new standards and trends in web design to provide a solid foundation for features that every website is expected to support nowadays, but please post bug reports, suggestions for improvement, or support requests on GitHub (https://github.com/bhadaway/generic-theme/issues) if you're getting jammed up. The biggest point of discussion would be the semi-minification of Generic's code. This simplicity, like the omission of comments in the code is intentional. If you prefer formatting, you're welcome to format the code any way you like. If I was able to help you out, consider making a donation (https://calmestghost.com/donate). Thank you and enjoy!
 Tags: accessibility-ready, one-column, two-columns, right-sidebar, custom-logo, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready, blog, e-commerce, portfolio
-Version: 1.8
+Version: 1.9
 Requires at least: 5.2
 Tested up to: 5.9
 Requires PHP: 7.0
@@ -52,6 +52,7 @@ input[type="submit"], button, .button{display:inline-block;font-family:georgia,s
 input[type="submit"]:hover, input[type="submit"]:focus, button:hover, button:focus, .button:hover, .button:focus{opacity:0.8}
 a img, input[type="image"], iframe{border:0}
 a img:hover, a:focus img, a svg:hover, a:focus svg{opacity:0.8}
+img[src$=".svg"], svg{display:inline-block;line-height:normal;vertical-align:middle}
 img, video, audio, table, select, textarea{max-width:100% !important;height:auto}
 table{width:100%;margin:30px 0}
 
@@ -126,6 +127,8 @@ h2.entry-title, h3.widget-title{margin-top:0}
 .nav-next{text-align:right;float:right}
 
 .note{display:block;font-size:14px;padding:20px;margin:30px 0}
+.icon{display:inline-block;width:32px;height:32px;line-height:normal;vertical-align:middle;mask-size:cover;background-color:currentColor}
+.symbol{font-family:"Times","Times New Roman","serif","sans-serif",system-ui,-apple-system,BlinkMacSystemFont,"Avenir Next","Avenir","Segoe UI","Lucida Grande","Helvetica Neue","Helvetica","Fira Sans","Roboto","Noto","Droid Sans","Cantarell","Oxygen","Ubuntu","Franklin Gothic Medium","Century Gothic","Liberation Sans",sans-serif,"EmojiSymbols"}
 
 .round{border-radius:100px}
 .circle{border-radius:50%}
@@ -174,6 +177,8 @@ h2.entry-title, h3.widget-title{margin-top:0}
 @media(max-width:768px){#header, #footer{text-align:center}#content, #sidebar{width:100%;padding:0}#branding, #menu, #menu div:first-of-type, #search{float:none}#search{margin-top:20px}#search .search-field{width:100%;color:#fff;border-color:#8a8a8a;cursor:text}#search .search-field:focus{width:100%}#menu.toggled{width:100%;height:100%;bottom:0;overflow-x:hidden;overflow-y:auto;z-index:1000}#menu .menu-toggle{display:inline-block}#menu ul{display:none}#menu.toggled ul, #menu.toggled ul.sub-menu, #menu.toggled ul.children{display:block;position:relative;top:0;left:0;padding:0 0 10px 0;margin:0}#menu.toggled ul.sub-menu, #menu.toggled ul.children{padding-bottom:0}#menu.toggled a, #menu.toggled ul.sub-menu a, #menu.toggled ul.children a{display:inline-block;width:100%;font-size:18px;color:#fff;text-align:center;line-height:20px;padding:15px 0 5px;border:0;margin:0;background:none}#menu.toggled ul.sub-menu a, #menu.toggled ul.children a{color:#ccc}.box-4, .box-5, .box-6{width:50%}}
 @media(max-width:767px){.single .nav-links .nav-previous, .single .nav-links .nav-next{float:none}.box-3{width:50%}.boxes .box-3:nth-child(3){width:100%}}
 @media(max-width:576px){#header, #container, #footer, .layer{padding:10%}.wp-caption, input, textarea, .button{width:100% !important}input[type="checkbox"], input[type="radio"]{width:auto !important}.box-2, .box-3, .box-4, .box-5, .box-6, .boxes .box-6:nth-child(5), .boxes .box-6:nth-child(6), .box-2-3, .box-1-3{width:100%}.spacer{display:block;width:100%;height:30px}}
+@media(prefers-color-scheme:light){body, #container{background:#fff}}
+@media(prefers-color-scheme:dark){body, #container{background:#111}}
 @media print{*{color:#000 !important;background:#fff !important}body{padding:50px !important;margin:0 !important}#content{display:block !important;padding:0 !important;margin:0 !important}#header, #sidebar, #footer, #comments, .entry-footer, .navigation, .share, .video-wrap, iframe, img{display:none !important}}
 
 .screen-reader-text{border:0;clip:rect(1px,1px,1px,1px);-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute!important;width:1px;word-wrap:normal!important;word-break:normal}
